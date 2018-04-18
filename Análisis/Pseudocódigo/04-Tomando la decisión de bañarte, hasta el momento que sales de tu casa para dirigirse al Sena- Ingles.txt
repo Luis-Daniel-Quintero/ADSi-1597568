@@ -1,0 +1,39 @@
+Start
+
+•	With the hand open the door of my closet
+•	Choose the clothes of used
+•	Leave the clothes on the bed
+•	Open the drawer of the shoes
+•	Decide wich used
+•	Leave the shoes at the side of the clothes
+•	Walk until the bathroom
+•	Go in in the bathroom
+•	With the two hands remove the clothes
+•	Open the door of the shower
+•	Go in in the shower
+•	Close the door of the shower
+•	Open with my hand the key of the water of left to right
+•	Enjuagar The body
+•	Close with my hand the key of the water of right to left
+•	Take with my hand the soap
+•	Jabonar The body
+•	Open with my hand the key of the water of left to right
+•	Enjuagar The body
+•	Close with my hand the key of the water of right to left
+•	Open the door of the shower
+•	With my hand take the towel
+•	Dry the body
+•	Wrap the towel to the body
+•	Go out of the bathroom
+•	Walk until the chamber
+•	Go in in the chamber
+•	With my hand close the door
+•	With the two hands put the underwear
+•	With the two hands put the trousers
+•	With the two hands put the shirt
+•	With the two hands put accessories
+•	Take the briefcase with the things of the Sena
+•	Go out of the room
+•	Walk until the main door
+
+End 
