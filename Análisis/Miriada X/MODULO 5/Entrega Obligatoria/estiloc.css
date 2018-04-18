@@ -1,0 +1,62 @@
+h1{
+	font-size: 35px;
+	text-align: center;
+	font-family: 'Lobster', cursive;
+	color:black;
+}
+body{
+	background: url(fondo.png) no-repeat center center ;
+	background-size: cover;
+}
+.raya{
+	height: 8px;
+	width: 100%;
+	background-color: #054359; opacity: 0.52;
+}
+
+.caja1{
+	height: 30px;
+	width: 100%;
+}
+
+#cristal{
+	text-align: center;
+	line-height: 100%;
+}
+
+#n1{
+	text-align: center;
+	background-color: #054359;
+	width: 390px;
+	height: 40px;
+	font-size: 20px;
+	border-radius: 15px;
+}
+
+.calculadora{
+ display:block;
+ margin:0 auto;
+ padding:20px;
+ background-color: #054359;
+ width: 225px;
+ height:225px;
+ border-radius: 25px;
+
+}
+
+.calculadora th button{
+ display:block;
+ width:70px;
+ height: 40px;
+ font-size: 15px;
+}
+
+#bot14 {
+color: #054359; opacity: 0.70;
+}
+
+#bot15 {
+color: #054359; opacity: 0.70;
+}
+
+

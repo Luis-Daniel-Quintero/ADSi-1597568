@@ -1,0 +1,23 @@
+h1{
+	text-align: center;
+	font-family: 'Lobster', cursive;
+	font-size: 2.5em;
+	color: #093CC4;
+}
+
+.caja1{
+	text-align: center;
+	height: 40%;
+	vertical-align: middle;
+	width: 40%;
+	font-size: 20px;
+	margin: 0 auto;
+	padding: 30px;
+    color:#093CC4;
+	border-radius: 50pt;
+	background-color: #B6BAC2;
+}
+body{
+	background: url(fondo.png) no-repeat center center ;
+	background-size: cover;
+}

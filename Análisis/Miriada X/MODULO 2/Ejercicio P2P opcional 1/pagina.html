@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="outf8">
+	<title>Herencia</title>
+	<style type="text/css">
+	*{margin: 15px}
+#caja header h1 {color:blue;}
+#caja .cabecera h1 {color:red ; } 
+header h1 {color: lime; }
+h1 {color: purple;}
+h1 {color: grey;}
+</style>
+</head>
+<body>
+
+	<div id="caja">
+		<header class="cabecera">
+<h1>Cabecera:header </h1>	
+		</header>
+<p>
+	<h2> Comentario:</h2>
+
+	Hay que calcular la tupla (A,B,C,D) garadora de todas las reglas 
+	CSS que compiten. <strong>A</strong> tiene maximo peso y <strong>D</strong> minimo.
+	Si hay empate en <strong>A</strong>, se mira en <strong>B</strong> y asi sucesivamente.
+	</p>
+	<ul>
+<li>	A = estilo en línea</li>
+ <li>   B = número de IDs (en nuestro caso = caja) </li>
+  <li>         C = número de clases (en nuestro caso = cabecera) </li>
+<li>   D = número de marcas HTML (en nuestro caso = header y h1) </li>
+<h3> PUNTUACIONES</h3>
+ 
+<p> <li> h1 {color: purple;}</li>
+<li> h1 {color: grey;}</li>
+<h3>Puntuacion  A=0 B=0 C=0 D= 1  
+<strong>TOTAL: 0,0,0,1 </strong></h3>
+
+<li>header h1 {color: lime; }</li>
+<h3>Puntuacion: A=0 B=0 C=0 D=2 
+<strong>TOTAL: 0,0,0,2</strong></h3>
+
+<li> #caja .cabecera h1 {color:red ; } </li>
+<h3> Puntuacion: A=0 B=1 C=1 D=1 
+<strong>TOTAL: 0,1,1,1</strong> ¡GANADORA!</h3>
+
+<li>#caja header h1 {color:blue;}</li>
+<h3>Puntuacion: A=0 B=1 C=0 D=2 
+<strong>TOTAL: 0,1,0,2</strong></h3>
+
+
+</ul>
+</p>
+
+</body>
+</html>

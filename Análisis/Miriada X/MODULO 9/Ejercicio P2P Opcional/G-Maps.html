@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> .gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400} </style>
+
+<link type="text/css" rel="stylesheet" href="./css/css">
+
+<style type="text/css"> .gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px} </style>
+
+<style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}
+</style>
+
+<style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+  
+  <title>  G-Maps </title>
+
+  <script type="text/javascript" src="./js/zepto.min.js."></script>
+  <script type="text/javascript" src="./js/js.js"></script>
+  <script type="text/javascript" src="./js/gmaps.js."></script>
+
+  <link rel="stylesheet" type="text/css" href="./css/mypath.css">
+  
+  <script type="text/javascript">
+    var map, lat, lng;
+    var ubicaciones;
+ 
+
+    $(function(){
+
+       function guardaUbicaciones() {
+                                      console.log(ubicaciones);
+                                      localStorage.ubicaciones = JSON.stringify(ubicaciones);
+                                    }
+
+      function cargaUbicaciones() {
+            if (localStorage.ubicaciones) {
+               try {
+                    // Al fallar el parse la página no carga el mapa
+                    ubicaciones = JSON.parse(localStorage.ubicaciones);
+               } 
+               catch (e) {
+                           ubicaciones = new Array();
+               }
+            } 
+            else  {
+                    ubicaciones = new Array();
+            }
+      }
+      
+      function muestraUbicaciones() {
+           var punto, punto_anterior;
+               for (var i = 0; i < ubicaciones.length; i++) 
+                   {
+                     if (ubicaciones[i]) 
+                        {
+                          punto = ubicaciones[i];
+                          map.addMarker({ lat: punto[0], lng: punto[1] });
+                          if (punto_anterior) {
+                                                map.drawRoute({ origin: [punto_anterior[0], punto_anterior[1]],
+                                                                destination: [punto[0], punto[1]],
+                                                                travelMode: 'driving',
+                                                                strokeColor: '#63AF2F',                                                                
+                                                                strokeOpacity: 0.5,
+                                                                strokeWeight: 5
+                                                              });
+                                              }
+                            punto_anterior = punto;
+                        }
+                    }
+                if (punto) {
+                             lat = punto[0];
+                             lng = punto[1];
+                           }
+      }
+
+      function enlazarMarcador(e){
+
+       // muestra ruta entre marcas anteriores y actuales
+        map.drawRoute({
+          origin: [lat, lng],  // origen en coordenadas anteriores
+          // destino en coordenadas del click o toque actual
+          destination: [e.latLng.lat(), e.latLng.lng()],
+          travelMode: 'driving',
+          strokeColor: '#0415E0',
+          strokeOpacity: 0.5,
+          strokeWeight: 5
+        });
+
+
+        lat = e.latLng.lat();   // guarda coords para marca siguiente
+        lng = e.latLng.lng();
+
+        map.addMarker({ lat: lat, lng: lng});  // pone marcador en mapa
+        ubicaciones.push ([lat, lng]);
+      };
+
+      $(window).bind("beforeunload", function() { guardaUbicaciones(); });  // Registrar Ubicaciones antes de salir
+      $("#inicializar").on('click',  function() { 
+                                                  var respuesta = confirm("¿Desea borrar la ruta trazada e iniciar una nueva? ")
+                                                  if (respuesta===true) 
+                                                     {
+                                                        ubicaciones = new Array();
+                                                        localStorage.ubicaciones = JSON.stringify(ubicaciones);
+                                                        geolocalizar();
+                                                     }
+                                                });
+
+      function geolocalizar(){
+        GMaps.geolocate({
+          success: function(position){
+                    cargaUbicaciones();    
+                    if (ubicaciones.length > 0) 
+                         {
+                           lat = ubicaciones[0][0];            // Carga la primera ubicacion que esta guardada
+                           lng = ubicaciones[0][1];
+                         } 
+                    else {
+                           lat = position.coords.latitude;    // Posiciones actuales de lat y lng
+                           lng = position.coords.longitude;
+                           ubicaciones.push ([lat, lng]);
+                         }
+                    map = new GMaps({  // muestra mapa centrado en coords [lat, lng]
+                      el: '#map',
+                      lat: lat,
+                      lng: lng,
+                      click: enlazarMarcador,
+                      tap: enlazarMarcador
+                    });
+                    map.addMarker({ lat: lat, lng: lng});  // marcador en [lat, lng]
+                    muestraUbicaciones();
+                  },
+          error: function(error) { 
+                    alert('La Geolocalización falló, habilite la seguridad del Navegador,  sale el siguiente Error: '+error.message); 
+                  },
+          not_supported: function(){ 
+                    alert("Su Navegador No Soporta Geolocalización"); 
+                  },
+        });
+      };
+
+      geolocalizar();
+    });
+  </script>
+
+
+<script type="text/javascript" charset="UTF-8" src="./js/common.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/map.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/util.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/marker.js"> </script>
+
+<style type="text/css"> .gm-style {font: 400 11px Roboto, Arial, sans-serif;text-decoration: none;}.gm-style img { max-width: none; } </style>
+
+<script type="text/javascript" charset="UTF-8" src="./js/onion.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/ViewportInfoService.GetViewportInfo"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/vt"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/vt(1)"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/controls.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/AuthenticationService.Authenticate"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/stats.js"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/QuotaService.RecordEvent"> </script>
+
+<script type="text/javascript" charset="UTF-8" src="./js/ViewportInfoService.GetViewportInfo"> </script>
+
+</head>
+<body>
+
+
+  <div id="latlng">
+  <h1>Geolocalización
+  <input id="inicializar" value="Inicializar" type="button">
+  </h1>
+  <p>Para que funcione debes comparitr tu ubicación del navegador con la página </p>
+  </div>
+
+
+  <div id="map" style="overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -217, -10);"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -768px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -768px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -768px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -768px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -217, -10);"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -768px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -768px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -768px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -768px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 768px; top: -512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 768px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 768px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 768px; top: 256px;"></div></div></div><div style="width: 27px; height: 43px; overflow: hidden; position: absolute; left: -14px; top: -43px; z-index: 0;"><img alt="" src="./js/spotlight-poi2.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 27px; height: 43px; overflow: hidden; position: absolute; left: -14px; top: -43px; z-index: 0;"><img alt="" src="./js/spotlight-poi2.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -217, -10);"></div></div></div><div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;" class="gm-style-pbc"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div><div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div class="gmnoprint" style="width: 27px; height: 43px; overflow: hidden; position: absolute; opacity: 0.01; left: -14px; top: -43px; z-index: 0;"><img alt="" src="./js/spotlight-poi2.png" draggable="false" usemap="#gmimap2" style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"><map name="gmimap2" id="gmimap2"><area href="javascript:void(0)" log="miw" coords="13.5,0,4,3.75,0,13.5,13.5,43,27,13.5,23,3.75" shape="poly" title="" style="cursor: pointer; touch-action: none;"></map></div><div class="gmnoprint" style="width: 27px; height: 43px; overflow: hidden; position: absolute; opacity: 0.01; left: -14px; top: -43px; z-index: 0;"><img alt="" src="./js/spotlight-poi2.png" draggable="false" usemap="#gmimap3" style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"><map name="gmimap3" id="gmimap3"><area href="javascript:void(0)" log="miw" coords="13.5,0,4,3.75,0,13.5,13.5,43,27,13.5,23,3.75" shape="poly" title="" style="cursor: pointer; touch-action: none;"></map></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe frameborder="0" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;" src="./js/saved_resource.html"></iframe></div></div></div>
+  
+
+
+</body>
+
+</html>

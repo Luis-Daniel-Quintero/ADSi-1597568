@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Secciones y lineas generales de un documento HTML5 </title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.caja {
+	width:75%;
+	margin:auto;
+	padding:0.4em;
+	background-color:#CCFFCC;
+	-moz-box-shadow: inset 0 0 5px 5px #888;
+	-webkit-box-shadow: inset 0 0 5px 5px#888;
+	box-shadow: inset 0 0 5px 5px #888;
+}
+h1{
+	font-family: castellar;
+}
+
+header {
+	text-align:center;
+}
+a {
+	text-decoration:underline;
+	color:#12440D;
+}
+nav ul{
+	background-color:#B7EFEB;
+	margin:0.2em;
+	padding:0.3em;
+	display:flex;
+	flex-direction: row;
+	list-style-type:none;
+	text-align:center;
+	border-top-right-radius: 24px;
+	border-bottom-left-radius: 24px;
+	-moz-box-shadow: 0 0 5px 5px #888;
+	-webkit-box-shadow: 0 0 5px 5px#888;
+	box-shadow: 0 0 5px 5px #888;
+	}
+nav li{
+	flex-grow: 1;
+	display:block;
+	margin:0.2em;
+	}
+a:hover {
+	background-color:#B7EFEB;
+	}
+.contenido {
+	margin-bottom:0.2em;
+	display:flex;
+	flex-direction:row;
+}
+.ppal {
+	padding:0.2em;
+	display:flex;
+	flex-direction:column;
+	flex-basis: 75%;
+}
+article {
+	flex-grow: 1;
+	display:block;
+	padding:0.2em;
+	margin:0.5em;
+	border-radius: 24px 0;
+	-moz-box-shadow: 0 0 5px 5px #888;
+	-webkit-box-shadow: 0 0 5px 5px #888;
+	box-shadow: 0 0 5px 5px #888;
+}
+
+img{
+	width: 310px;
+}
+
+aside {
+	padding:0.2em;
+	display:flex;
+	flex-direction:column;
+	flex-basis: 25%;
+	text-align:center;
+}
+aside p{
+	flex-grow: 1;
+	display:block;
+	padding:0.5em;
+	margin:0.5em;
+	border-radius: 24px;
+	background-color:#B7EFEB;
+	text-align:center;
+	-moz-box-shadow: -5px -5px 5px #888;
+	-webkit-box-shadow: -5px -5px 5px #888;
+	box-shadow: -5px -5px 5px #888;
+}
+footer {
+	background-color:#B7EFEB;
+	text-align:center;
+	margin:0em;
+	padding:0.2em;
+	border-radius: 24px;
+}
+small{
+	color:red;
+}
+</style>
+<title>Secciones y líneas generales de un documento HTML5</title>
+<link rel="stylesheet" id="coToolbarStyle" href="chrome-extension://cjabmdjcfcfdmffimndhafhblfmpjdpe/toolbar/styles/placeholder.css" type="text/css"><script type="text/javascript" id="cosymantecbfw_removeToolbar">(function () {				var toolbarElement = {},					parent = {},					interval = 0,					retryCount = 0,					isRemoved = false;				if (window.location.protocol === 'file:') {					interval = window.setInterval(function () {						toolbarElement = document.getElementById('coFrameDiv');						if (toolbarElement) {							parent = toolbarElement.parentNode;							if (parent) {								parent.removeChild(toolbarElement);								isRemoved = true;								if (document.body && document.body.style) {									document.body.style.setProperty('margin-top', '0px', 'important');								}							}						}						retryCount += 1;						if (retryCount > 10 || isRemoved) {							window.clearInterval(interval);						}					}, 10);				}			})();</script><script type="text/javascript" id="waxCS">var WAX = function () { var _arrInputs; return { getElement: function (i) { return _arrInputs[i]; }, setElement: function(i){ _arrInputs=i; } } }(); function waxGetElement(i) { return WAX.getElement(i); } function coSetPageData(t, d){ if('wax'==t) { WAX.setElement(d);} }</script><script type="text/javascript" id="waxCS">var WAX = function () { var _arrInputs; return { getElement: function (i) { return _arrInputs[i]; }, setElement: function(i){ _arrInputs=i; } } }(); function waxGetElement(i) { return WAX.getElement(i); } function coSetPageData(t, d){ if('wax'==t) { WAX.setElement(d);} }</script></head>
+
+<body class="caja">
+
+<header id="top">
+	<h1> Secciones y líneas generales de un documento HTML5</h1>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="#introduccion"><strong>Ver Introducción</strong></a></li>
+		<li><a href="#problemas"><strong>Ver Problemas resueltos por HTML5</strong></a></li>
+		<li><a href="#algoritmo"><strong>Ver El algoritmo de perfilado de HTML5</strong></a></li>
+	</ul>
+</nav>
+<section class="contenido">
+	<section class="ppal">
+		<article>
+			<h2 id="introduccion">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INTRODUCCION</h2>
+			<p>La especificación HTML5 trae muchos nuevos elementos a los desarrolladores web, permitiéndoles describir la estructura de un documento web con semántica estandarizada. Este documento describe estos elementos y cómo usarlos para definir el perfil de cualquier documento</p>
+		</article>
+		<article>
+			<h3 id="problemas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROBLEMAS RESUELTOS POR HTML5</h3>
+			<p>La definición de la estructura de un documento en HTML 4 y su algoritmo de perfilado es muy tosco y genera numerosos problemas:</p>
+			<ol>
+				<li>HTML5 quita la necesidad de elementos &lt;div&gt; para definir secciones semánticas sin definir valores específicos para los atributos class, introduciendo un nuevo elemento, &lt;section&gt;, el elemento de sección HTML.</li>
+				<li>Mezclar varios documentos es difícil: la inclusión de un sub-documento en un documento principal. Esto se resuelve en HTML5 con los elementos de seccionado (&lt;article&gt;, &lt;section&gt;, &lt;nav&gt; y &lt;aside&gt;) son siempre subsecciones de su sección ancestra más cercana.</li>
+				<li>HTML5 introduce el elemento &lt;hgroup&gt; que oculta todos los elementos de cabecera excepto el primero de más alto rango (por ejemplo, &lt;hgroup&gt;&lt;h1&gt;Justine&lt;/h1&gt;&lt;h2&gt;Les Malheurs de la Vertu&lt;/h2&gt;&lt;/hgroup&gt; crea el perfil 1. Justine).</li>
+				<li>Un documento puede tener secciones especiales conteniendo información relacionado que no es parte del flujo principal. HTML5 introduce el elemento &lt;aside&gt; permitiendo a dichas secciones no ser parte del perfil principal.</li>
+				<li>Hay información relacionada no al documento pero si al sitio entero, como logos, menús, tablas de contenidos, o información de derechos de autor y notas legales. Para ese propósito, HTML5 introduce tres elementos de sección específicos: &lt;nav&gt; para colecciones de enlaces, como una tabla de contenidos, &lt;footer&gt; y &lt;header&gt; información relacionada con el sitio.</li>
+			</ol>
+			<p>De manera más general, HTML5 trae precisión a las características de seccionado y cabecera, permitiendo a los perfiles de documento ser predecibles y usados por el navegador para mejorar la experiencia de usuario.</p>
+		</article>
+		<article>
+			<h3 id="algoritmo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EL ALGORITMO DE PERFILADO DE HTML5</h3>
+			<h4>&nbsp;&nbsp;&nbsp;Definiendo secciones en HTML5</h4>
+			<p>Todo el contenido incluido dentro del elemento &lt;body&gt; es parte de una sección. Las secciones en HTML5 pueden ser anidadas. Además de la sección principal, definida por el elemento &lt;body&gt;, los límites de la sección son definidos explícita o implícitamente. La secciones definidas explícitamente son el contenido definido en las etiquetas &lt;body&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;, &lt;header&gt;, y &lt;nav&gt;. <br><small>*Nota: Cada sección puede tener su propia jerarquía de cabeceras. Por lo tanto, incluso una sección anidada puede tener un elemento &lt;/h1&gt;. Consulte también Definiendo cabeceras en HTML5.</small></p>
+		</article>
+	</section>
+	<aside>
+		<STRONG>RESERVADO PARA PUBLICIDAD</STRONG>
+		<img  src="public-png.png">
+		<p> <a href="#top"> Tu anuncio aqui </a>  </p>
+		<p> <a href="#top"> Tu anuncio aqui </a>  </p>
+		<p> <a href="#top"> Tu anuncio aqui </a>  </p>
+		
+	</aside>
+</section>
+<footer>
+    <a href="#top">Ir a principio de la pagina</a>
+</footer>
+
+
+	</style>
+
+</head>
+<body>
+
+</body>
+</html>

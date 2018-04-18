@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Cronometro</title>
+<script type="text/javascript" src="./js/zepto.min.js"> </script>
+<script type="text/javascript" src="./js/touch.js"> </script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+<style>
+
+h1 {
+  padding-left: 10rem;
+}
+ p{
+  padding-left: 8rem;
+}
+
+#crono{ 
+      position: absolute; 
+      top: 8rem;
+      left: 10rem;
+      font-size:120px;
+      color: black;
+    }	      
+
+
+</style>
+
+<script type="text/javascript">
+  $(function(){ 
+    var t, cl = $("#crono");
+
+    function mostrar()  { cl.html((+cl.html() + 0.1).toFixed(1)); };
+    function arrancar() { t=setInterval(mostrar, 100);};
+    function parar()    { clearInterval(t);  t=undefined; };
+    function cambiar()  { if (!t) arrancar(); else parar(); };
+
+    $("body").on('tap', cambiar);
+    $("body").on('swipe', function(){ cl.html("0.0"); });
+
+
+
+  });
+
+</script>
+</head>
+<body>
+
+<h1> Cronómetro </h1>
+
+<div id="main">
+<div id="imgCrono"> <img src="./js/fondo.jpg" alt="cronometro" width="512">
+<h2><span id="crono"> 0.0 </span> </h2> 
+<p> <strong> Cronometro Para Pantallas Tactiles </strong> </p>
+<p>Inicializar:Deslizar Sobre el cronómetro </p>  
+<p> Avanzar/Parar: Tocar sobre el cronómetro </p>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

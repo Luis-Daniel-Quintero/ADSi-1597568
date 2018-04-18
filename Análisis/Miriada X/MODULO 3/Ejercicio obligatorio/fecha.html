@@ -1,0 +1,79 @@
+<!DOCTYPE html><html>
+<head>
+  <title>Date</title>
+
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+
+</head>
+<body>
+
+  <h1 id="h1"></h1>
+
+     <div class="raya1"></div>
+
+  <h1>Luis Daniel Quintero O.</h1>
+
+      <div class="raya2"></div>
+
+  <h2 id="h2">La fecha y la hora son:</h2>
+
+       <div id="fecha"></div>
+
+ <script type="text/javascript">
+  var fecha = new Date();
+  var msj;
+
+  if      (fecha.getHours() < 7)  { msj = "Buenas noches";}
+  else if (fecha.getHours() < 12) { msj = "Buenos días";}
+  else if (fecha.getHours() < 21) { msj = "Buenas tardes";}
+  else                                          { msj = "Buenas noches";}
+
+  document.getElementById("h1").innerHTML    = msj;
+  document.getElementById("fecha").innerHTML = fecha;
+  
+</script>
+<div class="caja1"><p> 
+<h2>Incluye los siguientes elementos&#58</h2> 
+<br>1)El nombre de la persona que hace la entrega debajo del titulo &lt h1&gt .
+<br>2) Un bloque &ltdiv&gt  debajo de la fecha y la hora y las instrucciones JavaScript necesarias para que muestre en dicho bloque el contenido de las siguientes propiedades DOM  en líneas separadas, que comiencen por el nombre de la propiedad(es) mostrada(s):
+<br>  a) Contenido de innerHTML de elemento identificado por id="h2"
+<br>  b) Contenido de outerHTML de elemento identificado por id="h1"
+<br>  c) Contenido de de la propiedad global: location.href
+<br>  e) Contenido de de las propiedades globales: screen.width y screen.heigth
+<br>  Subir dicha aplicación a la cuenta de neocities.org
+</p></div> 
+
+<div class="caja2">
+  <p>
+    <h2>Respuestas</h2>
+<br>a) Contenido de innerHTML de elemento identificado por id="h2"
+<blockquote>El navegador no muestra nada al visualizar la página, lo único que hace es eliminar el estilo asignado a la etiqueta ("h1") en el código CSS.</blockquote>
+<br>b) Contenido de outerHTML de elemento identificado por id="h1"
+<blockquote>Otra vez, el navegador no muestra nada al visualizar la página, lo único que hace es eliminar el estilo asignado a la etiqueta ("h1") en el código CSS.</blockquote>
+<br>c) Contenido de de la propiedad global: location.href
+<blockquote> "file:///C:/Users/HP/Documents/MIRIADA/MODULO%203/Ejercicio%20obligatorio/fecha.html" </blockquote>
+<br>d) Contenido de de la propiedad global: location
+<blockquote>Location {replace: ƒ, assign: ƒ, href: "file:///C:/Users/HP/Documents/MIRIADA/MODULO%203/Ejercicio%20obligatorio/fecha.html", ancestorOrigins: DOMStringList, origin: "file://", …}</blockquote>
+<br>e) Contenido de de las propiedades globales: screen.width y screen.heigth
+<blockquote><h3>Propiedad: screen.width </h3>
+  <p id="demoAncho">
+    "El ancho de tu pantalla es de:"
+    <br>
+    "1.600 px"
+  </p>
+  <h3>Propiedad: screen.heigth</h3>
+ <p id="demoAlto">
+    "El alto de tu pantalla es de:"
+    <br>
+    "900"
+  </p></blockquote> 
+  </p>
+</div>
+<footer>
+  <h1> Copyright &copy; Daniel Quintero</h1>
+</footer>
+
+</body>
+</html>

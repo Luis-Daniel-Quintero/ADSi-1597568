@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+	<title>Página con imagen responsive</title>
+</head>
+<body>
+	<h1>Imágen responsive, video y SVG</h1>
+	<h2>Imágen Responsive </h2>
+	<picture>
+	<source
+	media= "(min-width: 1100px)"
+	srcset= "shaum6.jpg">
+	<source
+	media= "(min-width: 1000px)"
+	srcset= "shaum5.jpg">
+	<source
+	media= "(min-width: 800px)"
+	srcset= "shaum4.jpg">
+	<source
+	media= "(min-width: 600px)"
+	srcset= "shaum3.jpg">
+	<source
+	media= "(min-width: 400px)"
+	srcset= "shaum2.jpg">
+	<source
+	media= "(min-width: 300px)"
+	srcset= "shaum1.jpg">
+	<img 
+	src="shaum1.jpg"
+	alt="shaum">
+	</picture>
+
+	<h2>Video</h2>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/N6k2sy2NxoI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <h2>SVG</h2>
+    
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3 -2 6 4" width="600" height="400">
+
+	
+	<desc/>
+	<style type="text/css">
+	<![CDATA[
+	]]>
+	</style>
+
+	<defs>
+		<g id="moire_circle">
+			<circle cx="0" cy="0" r="0.075" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.175" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.275" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.375" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.475" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.575" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.675" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.775" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.875" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="0.975" stroke="black" stroke-width="0.05" fill="none"/>
+
+			<circle cx="0" cy="0" r="1.075" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.175" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.275" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.375" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.475" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.575" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.675" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.775" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.875" stroke="black" stroke-width="0.05" fill="none"/>
+			<circle cx="0" cy="0" r="1.975" stroke="black" stroke-width="0.05" fill="none"/>
+		</g>
+	</defs>
+
+	<use xlink:href="#moire_circle" transform="translate(0.5 0)">
+		<animateTransform attributeName="transform" type="translate" values="-1,0;1,0;-1,0" keyTimes="0.0;0.5;1.0" dur="16s" repeatCount="indefinite"/>
+	</use>
+	<use xlink:href="#moire_circle" transform="translate(-0.5 0)">
+		<animateTransform attributeName="transform" type="translate" values="1,0;-1,0;1,0" keyTimes="0.0;0.5;1.0" dur="16s" repeatCount="indefinite"/>
+	</use>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="400px">
+<g id="Cube"> 
+	<g id="caras_bordes.Cube" stroke-width="1.0px" stroke-linejoin="miter" stroke-linecap="round" stroke="rgb(51,26,0)">
+	  <polygon fill="rgb(45,20,0)" points="288.0611,131.3717 179.4857,124.30176 87.0314,143.82837 241.66351,166.68231 " />
+	  <polygon fill="rgb(47,21,0)" points="270.74426,239.27365 288.0611,131.3717 241.66351,166.68231 229.75984,324.47355 " />
+	  <polygon fill="rgb(154,69,0)" points="229.75984,324.47355 241.66351,166.68231 87.0314,143.82837 116.26482,267.61168 " />
+	</g>
+</g> 
+</svg>
+
+</body>
+</html>

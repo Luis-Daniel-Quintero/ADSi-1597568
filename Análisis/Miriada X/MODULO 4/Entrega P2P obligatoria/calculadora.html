@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Calculadora</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</head>
+<body>
+
+  <h1 id="h1"></h1>
+
+ <script type="text/javascript">
+
+  var fecha = new Date();
+  var msj;
+  if      (fecha.getHours() < 7)  { msj = "Buenas noches";}
+  else if (fecha.getHours() < 12) { msj = "Buenos días";}
+  else if (fecha.getHours() < 21) { msj = "Buenas tardes";}
+  else                            { msj = "Buenas noches";}
+ document.getElementById("h1").innerHTML    = msj;
+
+ function calcula(operacion){
+ 	var operando1 = document.calc.operando1.value;
+ 	var operando2 = document.calc.operando2.value;
+ 	var result = 0;
+
+ 	if (operacion== '+' || operacion== '-' || operacion== '*' || operacion== '/') 
+ 	{
+ 	   result = eval(operando1 + operacion + operando2);
+ 	}
+ 	if (operacion=='^') 
+ 	{
+ 		result = operando1 * operando1;
+ 	}
+ 	if (operacion=='I')
+ 	 {
+ 	 	result = eval (1 / operando1);
+ 	 }
+ 	 if (operacion=='R')
+ 	 {
+ 	 	result = eval (sqrt (x) (operando1 ));
+ 	 }
+ 	 if (operacion=='F') 
+ 	 {
+ 	 	result = eval (Math.floor(operando1));
+ 	 }
+ 	 if (operacion=='E') 
+ 	 {
+ 	 	result = eval (Math.pow(operando1 , operando2));
+ 	 }
+ 	 document.calc.resultado.value = result;
+ }
+</script>
+
+<h1>Bienvenidos a la calculadora de Daniel Quintero</h1>
+<div class="caja1">
+
+<form name="calc">
+	<input type="text" name="operando1" value="0" size="20">
+	<br>
+	<input type="text" name="operando2" value="0" size="20">
+	<br>
+	<input type="button" name=""value=" + " onclick="calcula('+')">
+	<input type="button" name=""value=" - " onclick="calcula('-')">
+	<input type="button" name=""value=" X " onclick="calcula('*')">
+	<input type="button" name=""value=" / " onclick="calcula('/')">
+	<input type="button" name=""value=" x^2 " onclick="calcula('^')">
+	<input type="button" name=""value=" 1/x " onclick="calcula('I')">
+	<input type="button" name=""value=" sqrt (x)" onclick="calcula('R')">
+	<input type="button" name=""value=" Math.floor " onclick="calcula('F')">
+	<input type="button" name=""value=" x^y " onclick="calcula('E')">
+	<br>
+	<h2>Resultado:</h2>
+	<input type="text" name="resultado" value="0" size="20">
+</form>
+</div>
+
+</body>
+</html>

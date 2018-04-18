@@ -1,0 +1,36 @@
+*{
+  outline-color: transparent;
+}
+
+body{
+  font-family: 'Droid Sans', 'Helvetica', Arial, sans-serif;
+}
+
+#inicializar{
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  background-color: #6AA300;
+}
+
+#latlng{
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute; /* posición absoluta a navegador */
+  top: 0;             /* ajusta a borde de navegador */
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+#map{
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute; /* posición absoluta a navegador */
+  top: 70px;          /* debajo de borde de navegador */
+  left: 0;            /* ajusta a borde de navegador */
+  right: 0;
+  bottom: 0;
+  background: #FDD9E7 ;
+}
