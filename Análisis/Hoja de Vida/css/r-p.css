@@ -1,0 +1,244 @@
+*{
+	outline-color: transparent;
+}
+
+@font-face{ /*Fuente Letra*/
+	font-family: "Tinos";
+	src: url(../fonts/Tinos/Tinos-Italic.ttf);
+}
+
+.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 2rem;
+}
+
+body{
+		font-family: 'Tinos', serif;
+}
+
+h1{      /* Curriculum Vitae*/
+	text-align: center;
+	font-size: 3rem;
+	font-family: 'Tinos', serif;
+}
+
+.daniel{ /*Img*/
+	width: 30rem;
+}
+
+.data{
+	width: 30rem;
+	padding-top: 2.5rem;
+}
+
+.container1{ /* Container img-data */
+	display: flex;
+	margin-right:10rem;
+	margin-left: 10rem; 
+	padding-bottom: 2rem;
+	border-radius: 3rem;
+}
+
+dt{      /* Data */
+	font-size: 1.5rem;
+	font-family: 'EB Garamond', serif;
+	color:#797D7F;
+}
+
+strong{
+	font-size: 1.8rem;
+	color: black;
+}
+
+h2{      /* Studies*/
+	text-align: center;
+	font-size: 2rem;
+	font-family: 'Tinos', serif;
+}
+
+h3{ /*Reference1-2*/
+    margin-left: 20rem;
+    margin-top: 1rem;
+    font-family: 'Tinos', serif;
+}
+
+.data1{ /*Data Reference*/
+	margin-left: 30rem;
+	margin-bottom: 1rem;
+	font-family: 'EB Garamond', serif;
+}
+
+h4{
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.border{
+	border-radius: 3rem;
+}
+
+
+/*Diseño Responsivo*/
+@media (min-width: 319px) and (max-width:410px) {
+
+	.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 0rem;
+	}	
+
+		.container1{ /* Container img-data */
+				margin-right:0rem;
+				margin-left: 0rem; 
+				} 
+
+				.daniel{
+					width: 4rem;
+					padding-left: 3.64rem;
+				}
+
+	 , h2{
+		font-size: 1.5rem;
+	}
+	
+	 dt{
+		display: none;
+	}
+
+	h3{ /*Reference1-2*/
+    margin-left: 1rem;
+    margin-top: 1rem;
+    }
+
+	.data1{ /*Data Reference*/
+	margin-left: 2.5rem;
+	margin-bottom: 1rem;
+    }
+}
+
+/*********************************************************/
+
+@media (min-width: 411px) and (max-width:767px) {
+
+	.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 0rem;
+	}	
+
+		.container1{ /* Container img-data */
+				margin-right:0rem;
+				margin-left: 0rem; 
+				} 
+
+				.daniel{
+					width: 4rem;
+					padding-left: 6rem;
+				}
+
+	h2{
+		font-size: 2rem;
+	}
+
+	 dt{
+		display: none;
+	}
+
+	h3{ /*Reference1-2*/
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+    }
+
+	.data1{ /*Data Reference*/
+	margin-left: 4rem;
+	margin-bottom: 1rem;
+    }
+}
+
+/*****************************************************/
+
+@media (min-width: 768px) and (max-width:1000px) {
+	
+	.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 0rem;
+	}	
+
+		.container1{ /* Container img-data */
+				margin-right:0rem;
+				margin-left: 0rem; 
+				} 
+
+				.daniel{
+					width: 10rem;
+					padding-left: 3rem;
+				}
+
+				.data{
+				width: 40rem;
+				padding-top: 1rem;
+				}
+
+	h2{
+		font-size: 3rem;
+	}
+
+	dt{ /*Data*/
+		padding-top: 1rem;
+		margin-left: 8rem;
+		font-size: 1.5rem;
+	}
+
+	h3{ /*Reference1-2*/
+    margin-left: 8rem;
+    margin-top: 1rem;
+    }
+
+	.data1{ /*Data Reference*/
+	margin-left: 12rem;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+    }
+
+}
+
+/***************************************************/
+
+@media (min-width: 1020px) and (max-width:1025px) {
+	
+	.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 0rem;
+	}	
+
+		.container1{ /* Container img-data */
+				margin-right:2rem;
+				margin-left: 2rem; 
+				}
+
+				.daniel{
+					width: 10rem;
+					padding-left: 5rem;
+				}
+
+				.data{
+				width: 40rem;
+				padding-top: 0rem;
+				}
+
+	h2{
+		font-size: 3rem;
+	}
+
+	dt{
+		padding-top: 2rem;
+		margin-left: 15rem;
+		font-size: 1.5rem;
+	}
+
+	h3{ /*Reference1-2*/
+    margin-left: 15rem;
+    margin-top: 1rem;
+    }
+
+	.data1{ /*Data Reference*/
+	margin-left: 18rem;
+	margin-bottom: 1rem;
+	font-size: 1.8rem;
+    }
+
+
+}

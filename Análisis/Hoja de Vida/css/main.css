@@ -1,0 +1,116 @@
+*{
+	outline-color: transparent;
+}
+
+@font-face{ /*Fuente Letra*/
+	font-family: "Tinos";
+	src: url(../fonts/Tinos/Tinos-Italic.ttf);
+}
+
+.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 2rem;
+}
+
+body{
+		font-family: 'Tinos', serif;
+}
+
+h1{
+	text-align: center;
+	font-size: 3rem;
+}
+
+.daniel{   /* FOTO*/
+	text-align:  center;
+}
+
+h2{      /* Personal Information*/
+	text-align: center;
+	font-size: 2rem;
+}
+
+dt{      /* Data */
+	margin-left: 24rem;
+	font-size: 1.5rem;
+	font-family: 'EB Garamond', serif;
+	color:#797D7F;
+}
+
+strong{
+	font-size: 1.8rem;
+	color: black;
+}
+
+h4{
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.border{
+	border-radius: 3rem;
+}
+
+/*Diseño Responsivo*/
+
+@media (min-width: 319px) and (max-width:412px) {
+
+	dt{
+		padding-top: 1rem;
+		margin-left: 1.5rem;
+		font-size: 0.8rem;
+	}
+
+	strong{
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 413px) and (max-width:767px) {
+		dt{
+		padding-top: 1rem;
+		margin-left: 5rem;
+		font-size: 0.8rem;
+	}
+
+	strong{
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 768px) and (max-width:1000px) {
+	
+	h2{
+		font-size: 3rem;
+	}
+
+	dt{
+		padding-top: 1rem;
+		margin-left: 12rem;
+		font-size: 1.4rem;
+	}
+
+	strong{
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 1020px) and (max-width:1025px) {
+	
+	.nav-link ,  .navbar-brand{ /* Menu Plegable*/
+	margin-right: 0rem;
+	}	
+
+	h2{
+		font-size: 3rem;
+	}
+
+	dt{
+		padding-top: 1rem;
+		margin-left: 18rem;
+		font-size: 1.5rem;
+	}
+
+	strong {
+		font-size: 2rem;
+	}
+}
