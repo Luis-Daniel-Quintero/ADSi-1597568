@@ -1,0 +1,52 @@
+/*
+*styles of the form in which we edit our users' data
+
+    Created on : 20/05/2018, 12:00:20 PM
+    Author     : Luis Daniel Quintero Orjuela <luisdanielq07@gmail.com>
+*/
+
+*{
+	outline-color: transparent;
+}
+
+.picture{
+    background: url(../img/backdrop-edit.png)  ; 
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
+.picture:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    position: absolute;
+    opacity: 0.5;
+}
+
+.transbox{
+    text-align: center;
+    position: relative; 
+}
+
+h1{
+    padding-top: 5rem;
+    font-size: 3rem;
+}
+
+input{
+    width: 20rem;
+    height: 2rem;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+    padding-right: 2rem;
+    padding-left: 1rem;
+}
+
+button{
+    width: 15rem;
+    height: 2rem;
+    margin-top: 1rem;
+}

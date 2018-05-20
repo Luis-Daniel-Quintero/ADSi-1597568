@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>add new user</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/add.css">
+    </head>
+    <body>
+        <div class="picture">
+         
+            <div class="transbox"> 
+        <h1> ADD USER </h1>
+        
+            <div class="agg_user">
+            <img src="img/add.png" width="100" title="Add-User">
+            </div>
+        
+        <form action="add.php" method="POST">
+            <br>      <input type="text" name="name" placeholder="Enter your name " required  >
+            <br>      <input type="text" name="cedule" placeholder="Enter your cedule " required>
+            <br>      <input type="text" name="phone" placeholder="Enter your phone number " required>
+            <br>      <input type="text" name="password" placeholder="Enter your passwword" required>
+            <br><br>  <button type="submit" class="btn btn-success"> Add </button>
+            <br>  <button type="button" class="btn btn-danger"  onclick="pageBack()"> Cancel </button>    
+        </form>
+        
+        <script>
+            function pageBack(){
+                window.location.href = 'index.php';
+            }
+        </script>
+        </div>
+        </div>
+    </body>
+</html>
